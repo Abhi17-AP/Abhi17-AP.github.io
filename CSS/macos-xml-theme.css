@@ -1,0 +1,34 @@
+/* macOS-style XML syntax highlighting */
+.xml-tag {
+    color: #78492a;
+}
+
+.xml-tag-name {
+    color: #800080;
+    font-weight: bold;
+}
+
+.xml-attribute {
+    color: #994500;
+}
+
+.xml-attribute-value {
+    color: #1a1aa6;
+}
+
+.xml-comment {
+    color: #228b22;
+    font-style: italic;
+}
+
+.xml-text {
+    color: #333333;
+}
+
+.xml-processing {
+    color: #999999;
+}
+
+.xml-cdata {
+    color: #1a1aa6;
+}

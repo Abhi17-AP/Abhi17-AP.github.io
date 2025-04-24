@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.pane-header {
+    padding: 12px 15px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pane-header h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.pane-content {
+    height: calc(100vh - 45px);
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#browse-btn {
+    padding: 4px 12px;
+    font-size: 12px;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#browse-btn:hover {
+    background-color: #0062cc;
+}
+
+/* Folder tree styles */
+.folder, .file {
+    padding: 4px 0;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.folder::before {
+    content: "📁";
+    position: absolute;
+    left: 0;
+}
+
+.file.xml-file::before {
+    content: "📄";
+    position: absolute;
+    left: 0;
+    color: #ff9900;
+}
+
+.folder.collapsed::before {
+    content: "📁";
+}
+
+.folder.expanded::before {
+    content: "📂";
+}
+
+.contents {
+    margin-left: 15px;
+    display: block;
+}
+
+.collapsed > .contents {
+    display: none;
+}
+
+/* File list styles */
+.file-item {
+    padding: 8px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-item:hover {
+    background-color: #e0e0e0;
+}
+
+.file-item.selected {
+    background-color: #d4e6ff;
+    color: #0066cc;
+}
+
+/* XML Viewer styles */
+#xml-viewer {
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* Black and Blue Color Scheme */
+:root {
+    /* Blue Shades */
+    --blue-primary: #0071e3;
+    --blue-dark: #005bb5;
+    --blue-light: #e6f0fa;
+    --blue-pale: #f5f9ff;
+    
+    /* Black/Gray Shades */
+    --black-primary: #000000;
+    --black-secondary: #333333;
+    --black-tertiary: #666666;
+    --gray-light: #f0f0f0;
+    --gray-medium: #e0e0e0;
+    --gray-dark: #cccccc;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--gray-light);
+    color: var(--black-primary);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.test_case {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 0;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: 1px solid var(--gray-medium);
+}
+
+.step {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+.step:last-child {
+    border-bottom: none;
+}
+
+.step-id {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue-primary);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.instruct {
+    background-color: var(--blue-pale);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 8px 0;
+    font-size: 15px;
+    border-left: 3px solid var(--blue-primary);
+}
+
+.capture {
+    display: inline-block;
+    background-color: var(--blue-light);
+    color: var(--blue-dark);
+    padding: 6px 12px;
+    margin: 4px 8px 4px 0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--blue-primary);
+}
+
+.monitor_scope {
+    background-color: var(--blue-pale);
+    margin: 16px 0;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-medium);
+}
+
+.monitor {
+    background-color: white;
+    border: 1px solid var(--gray-medium);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-family: Menlo, monospace;
+    font-size: 14px;
+}
+
+.description {
+    color: var(--black-secondary);
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.event {
+    color: var(--blue-dark);
+    font-weight: 600;
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.assert {
+    color: var(--black-primary);
+    margin: 8px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--blue-primary);
+    font-size: 14px;
+}
+
+.set {
+    color: var(--blue-dark);
+    margin: 8px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--blue-primary);
+    font-size: 14px;
+}
+
+.prompt {
+    background-color: var(--blue-light);
+    padding: 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    border-left: 3px solid var(--blue-primary);
+}
+
+.prompt .title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--black-primary);
+    font-size: 15px;
+}
+
+.bool {
+    display: inline-block;
+    background-color: var(--blue-pale);
+    color: var(--blue-dark);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    border: 1px solid var(--blue-primary);
+}
+
+.if {
+    color: var(--blue-dark);
+    font-style: italic;
+    margin: 8px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.timeout {
+    color: var(--blue-dark);
+    font-size: 14px;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* Converter UI Styles */
+.converter-ui {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.file-input-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--blue-primary);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.file-input-label:hover {
+    background-color: var(--blue-dark);
+}
+
+#file-input {
+    display: none;
+}
+
+#output {
+    margin-top: 30px;
+}
+
+.output-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--black-primary);
+}
+
+.error {
+    color: var(--black-primary);
+    padding: 20px;
+    background: var(--gray-light);
+    border-radius: 8px;
+    border: 1px solid var(--blue-primary);
+}
